@@ -54,6 +54,12 @@ Add song to playlist
               </h4>
               </Link>
         </li>
+        <li className="p-2">
+            <Link to='/viewAlbums'><h4>
+              View all albums
+              </h4>
+              </Link>
+        </li>
       </ul>
         </Offcanvas.Body>
       </Offcanvas>

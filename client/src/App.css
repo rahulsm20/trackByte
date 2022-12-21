@@ -1,3 +1,15 @@
+@media screen and (max-width:768px) {
+  .card{
+    width: 70%;
+  }
+  .albumcard{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items:center;
+    width: 70%;
+  }
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -11,8 +23,8 @@
 }
 
 body{
-background: rgba(12, 14, 12, 0.4);
-}
+background-image: url('../public/bg.jpg');
+} 
 .logo{
   max-width: 1em;
 }
@@ -20,8 +32,29 @@ background: rgba(12, 14, 12, 0.4);
 input{
   border-radius: 1rem;
   border: none; 
+  color: black;
+  background-color:aliceblue ;
+  opacity: 70%;
 }
 
-.submit{
+.submit,.add{
   background-color:rgb(27, 27, 61);
 }
+
+.card{
+  background-color: transparent; 
+}
+
+.albumCover{
+  border-radius: 1em;
+  border: none;
+}
+
+.albumtitle,.artist,.label,.genre {
+  font-family: 'Montserrat';
+  font-size: 1.8em;
+}
+.delete{
+  background-color:rgba(209, 14, 14, 0.938);
+}
+

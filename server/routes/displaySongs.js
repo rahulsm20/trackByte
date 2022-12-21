@@ -1,7 +1,7 @@
 const db=require('../db/connect')
 
-const getSongs=async(req,res)=>{
-    db.query('select al.*, a.link, ar.artName from album al, albumCover a,artist ar where al.albumId=a.albumId and al.artId=ar.artId;',
+const displaySongs=async(req,res)=>{
+    db.query('SELECT * FROM song',
     (err,result)=>{
         if(err)
         {
@@ -14,4 +14,4 @@ const getSongs=async(req,res)=>{
     })
 }
 
-module.exports=getSongs
+module.exports=displaySongs

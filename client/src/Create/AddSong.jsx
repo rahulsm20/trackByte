@@ -32,19 +32,19 @@ const AddSong = () => {
                 <form className='d-flex flex-wrap justify-content-center align-items-center' onSubmit={handleForm}>
                 <div className='flex-column'>
                 <label>Song ID</label>
-                <li><input type="number" className='m-4 p-2'  onChange={(event)=>setSongId(event.target.value)}/></li>
+                <li><input type="number" className='m-4 p-2'  onChange={(event)=>setSongId(event.target.value)} required/></li>
                 <label>Song Name</label>
-                <li><input type="text" className='m-4 p-2' onChange={(event)=>setSongName(event.target.value)}/></li>
+                <li><input type="text" className='m-4 p-2' onChange={(event)=>setSongName(event.target.value)} required/></li>
                 <label>Artist ID</label>
-                <li><input type="number" className='m-4 p-2' onChange={(event)=>setArtId(event.target.value)}/></li>
+                <li><input type="number" className='m-4 p-2' onChange={(event)=>setArtId(event.target.value)} required/></li>
                 </div>
                 <div className='flex-column'>
                 <label>Genre</label>
-                <li><input type="text" className='m-4 p-2' onChange={(event)=>setGenre(event.target.value)}/></li>
+                <li><input type="text" className='m-4 p-2' onChange={(event)=>setGenre(event.target.value)} required/></li>
                 <label>Album ID</label>
-                <li><input type="number" className='m-4 p-2' onChange={(event)=>setAlbumID(event.target.value)}/></li>
+                <li><input type="number" className='m-4 p-2' onChange={(event)=>setAlbumID(event.target.value)} required/></li>
                 <label>Length (in seconds)</label>
-                <li><input type="number" className='m-4 p-2' onChange={(event)=>setSeconds(event.target.value)}/></li>
+                <li><input type="number" className='m-4 p-2' onChange={(event)=>setSeconds(event.target.value)} required/></li>
                 </div>
                 <button className="m-4 submit text-white col-3" onClick={handleForm}>Submit</button>
                 </form>

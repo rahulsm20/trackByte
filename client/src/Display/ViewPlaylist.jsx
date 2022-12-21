@@ -29,7 +29,7 @@ const ViewPlaylist = () => {
             value={query}
             onChange={(event) => {
               setQuery(event.target.value)}}></input>
-      <Table responsive striped bordered hover variant="dark">
+      <Table responsive striped="columns" bordered hover variant="dark">
         <thead>
             <tr>
             <th>Song </th>
@@ -51,7 +51,7 @@ const ViewPlaylist = () => {
         <td>
             <ul className='list-unstyled d-flex '>
                 <li>
-                    <button className="btn bg-primary m-1">Edit</button>
+                    <button className="btn delete text-white m-1">Delete</button>
                     </li>
                 </ul>
                 </td>

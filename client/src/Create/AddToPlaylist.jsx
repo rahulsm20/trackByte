@@ -4,11 +4,13 @@ import axios from 'axios'
 const addToPlaylist = () => {
     const [songId,setSongId]=useState('')
     const [songName,setSongName]=useState('')
-    const handleForm=()=>{
+    const [status,setStatus]=useState(false)
+    const handleForm=(event)=>{
+      event.preventDefault()
         axios.post('http://localhost:3000/addToPlaylist',{
             songId:songId,
             songName:songName
-        }).then((res)=>console.log('Added song to playlist'))
+        }).then((res)=>setStatus(true))
         .catch((err)=>console.log(err))
     }
   return (
@@ -21,10 +23,11 @@ const addToPlaylist = () => {
                 <form className='d-flex flex-wrap justify-content-center align-items-center' onSubmit={handleForm}>
                 <div className='flex-column'>
                 <label>Song ID</label>
-                <li><input type="number" className='m-4 p-2'  onChange={(event)=>setSongId(event.target.value)}/></li>
+                <li><input type="number" className='m-4 p-2'  onChange={(event)=>setSongId(event.target.value)} required/></li>
                 <label>Song Name</label>
-                <li><input type="text" className='m-4 p-2' onChange={(event)=>setSongName(event.target.value)}/></li>
+                <li><input type="text" className='m-4 p-2' onChange={(event)=>setSongName(event.target.value)} required/></li>
                 <button className="m-4 submit text-white col-5" onClick={handleForm}>Submit</button>
+                {status ? <p>Song added to playlist</p> : <p className='text-danger'>Please enter correct details</p>}
                 </div>
                 </form>
                 </ul>
