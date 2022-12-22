@@ -1,10 +1,11 @@
 import {React,useEffect,useState} from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import Navbar from '../Home/Navbar'
 import Table from 'react-bootstrap/Table'
 import axios from 'axios'
 const Album = () => {
     const {name} = useParams()
+    const navigate=useNavigate()
     const [mapAlbum,setMapAlbum]=useState([{
         albumName:" ",
         link:" ",
@@ -26,7 +27,7 @@ const Album = () => {
         .catch((err)=>console.log(err))
     },[]);
     const handleShow = async ()=> {
-        setState('success')
+      navigate('/addtoplaylist')
     }
     return (
     <div>
@@ -34,11 +35,11 @@ const Album = () => {
         <div className='d-flex mt-5 pt-5 col-lg-12 justify-content-intial align-items-center albumcard'>
         <img src={album.link} className='col-5'/>
         <div className="d-flex flex-column mx-auto">
-        <p className='mx-4 albumtitle'>{album.albumName}</p>
+        <h1 className='mx-4 albumtitle'>{album.albumName}</h1>
         <hr/>
-        <p className='artist'><b>Artist</b> - <span>{album.artName}</span> </p>
-        <p className='genre'><b>Genre</b> - {album.genre}</p>
-        <p className='label'><b>Label</b> - {album.labelName}</p>
+        <p className='artist'><b className='cat'>Artist</b> - <span>{album.artName}</span> </p>
+        <p className='genre'><b className='cat'>Genre</b> - {album.genre}</p>
+        <p className='label'><b className='cat'>Label</b> - {album.labelName}</p>
         </div>
         </div>
         <Table responsive striped="columns" hover variant="dark" className='mt-5'>
@@ -59,7 +60,7 @@ const Album = () => {
         <td>{song.artName}</td>
         <td>{song.seconds}</td>
         <td>
-        <button className="submit m-1 text-white" type="submit">Add to playlist</button>         
+        <button className="submit m-1 text-white" type="submit" onClick={handleShow}>Add to playlist</button>         
         </td>
         </tr>)}
         </tbody>

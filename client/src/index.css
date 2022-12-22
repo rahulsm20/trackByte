@@ -56,3 +56,8 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.chart{
+  border-radius: 1em;
+  background-color: transparent;
+  
+}

@@ -6,12 +6,16 @@ import './App.css'
 import ViewPlaylist from './Display/ViewPlaylist'
 import ViewSongs from './Display/ViewSongs'
 import Album from './Album/Album'
+import Index from './Home/Index'
+import DeleteFromPlaylist from './Delete/DeleteSong'
 function App() {
   return (
     <div className="App text-white">
       <Routes>
-        <Route path='/' element={<Home/>}/>
+        <Route path='/' element={<Index/>}/>
+        <Route path='/analytics' element={<Home/>}/>
         <Route path='/addSong' element={<AddSong/>}/>
+        <Route path='/delfromplaylist' element={<DeleteFromPlaylist/>}/>
         <Route path='/addtoplaylist' element={<AddToPlaylist/>}/>
         <Route path='/viewPlaylist' element={<ViewPlaylist/>}/>
         <Route path='/viewAlbums' element={<ViewSongs/>}/>

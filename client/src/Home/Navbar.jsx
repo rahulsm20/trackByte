@@ -19,17 +19,16 @@ const Navbar = () => {
         </ul>
       </nav>
       <Offcanvas show={show} onHide={handleClose} className="bg-black">
-        <Offcanvas.Header closeButton>
+        <Offcanvas.Header closeButton className='bg-dark'>
           <Offcanvas.Title className="text-white"><h4>
-
           Choose an action
           </h4>
-          </Offcanvas.Title>
+          </Offcanvas.Title>  
         </Offcanvas.Header>
         <Offcanvas.Body>
       <ul className="list-unstyled  ">
         <li className='p-2'>
-            <Link to='/'><h4>
+            <Link to='/analytics'><h4>
               Home
               </h4>
 </Link>

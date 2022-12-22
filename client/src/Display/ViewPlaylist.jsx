@@ -2,7 +2,9 @@ import {React,useState,useEffect,useMemo} from 'react'
 import Navbar from '../Home/Navbar'
 import axios from 'axios'
 import Table from 'react-bootstrap/Table'
+import { useNavigate } from 'react-router-dom'
 const ViewPlaylist = () => {
+  const navigate= useNavigate()
     const [query,setQuery]=useState('')
     const [playlist,setPlayList]=useState([{
         songName:"",
@@ -20,6 +22,9 @@ const ViewPlaylist = () => {
         return playlist.filter((song) => {
         return song.songName.toLowerCase().includes(query.toLowerCase());
         })},[playlist,query]);
+    const handleClick = () =>{
+      navigate('/delfromplaylist')
+    }
   return (
     <div>
       <Navbar/>
@@ -32,6 +37,7 @@ const ViewPlaylist = () => {
       <Table responsive striped="columns" bordered hover variant="dark">
         <thead>
             <tr>
+            <th>#</th>
             <th>Song </th>
             <th>Artist</th>
             <th>Album</th>
@@ -42,7 +48,8 @@ const ViewPlaylist = () => {
         </thead>
         <tbody>
         {filteredPlaylist.map((song,key)=>
-        <tr key={key}>    
+        <tr id={key}>
+          <td>{song.songId}</td>    
           <td>{song.songName}</td>
         <td>{song.artName}</td>
         <td>{song.albumName}</td>
@@ -51,7 +58,7 @@ const ViewPlaylist = () => {
         <td>
             <ul className='list-unstyled d-flex '>
                 <li>
-                    <button className="btn delete text-white m-1">Delete</button>
+                    <button className="btn delete text-white m-1" onClick={handleClick}>Delete</button>
                     </li>
                 </ul>
                 </td>

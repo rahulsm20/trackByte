@@ -50,9 +50,12 @@ input{
   border: none;
 }
 
-.albumtitle,.artist,.label,.genre {
+.artist,.label,.genre {
   font-family: 'Montserrat';
   font-size: 1.8em;
+}
+.albumtitle{
+  font-size: 3.5em;
 }
 .delete{
   background-color:rgba(209, 14, 14, 0.938);
