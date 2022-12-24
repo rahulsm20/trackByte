@@ -93,7 +93,7 @@ const Home = () => {
         Your favorite genres
         </h5> 
         {
-          loading ? <p>Data is loading...</p> : 
+          loading ? <img src="https://media.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif"/> : 
           <BarChart data={userData} options={option}/>
         } 
         </div>
@@ -102,7 +102,7 @@ const Home = () => {
             Your favorite albums
           </h5>
 {
-          loading1 ? <p>Data is loading...</p> : 
+          loading1 ? <img src="https://media.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif"/> : 
 <PieChart piedata={pieChartData}/>
         } 
         </div>
