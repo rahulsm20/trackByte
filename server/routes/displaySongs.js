@@ -1,7 +1,7 @@
 const db=require('../db/connect')
 
 const displaySongs=async(req,res)=>{
-    db.query('SELECT * FROM song',
+    db.query('SELECT s.songId,s.songName,a.artName,s.genre,s.seconds FROM song s, artist a where s.artId=a.artId',
     (err,result)=>{
         if(err)
         {
