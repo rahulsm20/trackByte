@@ -7,7 +7,7 @@ const DeleteFromPlaylist = () => {
     const handleForm=(event)=>{
       event.preventDefault()
         axios.delete('http://localhost:3000/delfromplaylist',{
-            songId:songId
+          data:{ songId:songId }
         }).then((res)=>setStatus(true))
         .catch((err)=>console.log(err))
     }
@@ -20,7 +20,7 @@ const DeleteFromPlaylist = () => {
                 <hr/>
                 <form className='d-flex flex-wrap justify-content-center align-items-center' onSubmit={handleForm}>
                 <div className='flex-column'>
-                <label>Song Id</label>
+                <label>Song ID</label>
                 <li><input type="number" className='m-4 p-2' onChange={(event)=>setSongId(event.target.value)} required/></li>
                 <button className="m-4 submit text-white col-5" onClick={handleForm}>Submit</button>
                 {status ? <p>Song deleted from playlist</p> : <p className='text-danger'>Please enter correct details</p>}
