@@ -34,7 +34,7 @@ const ViewPlaylist = () => {
             value={query}
             onChange={(event) => {
               setQuery(event.target.value)}}></input>
-      <Table responsive striped="columns" bordered hover variant="dark">
+      <Table responsive variant="transparent" className='text-white mx-auto'>
         <thead>
             <tr>
             <th>#</th>

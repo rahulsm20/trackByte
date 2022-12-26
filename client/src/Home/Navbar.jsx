@@ -8,7 +8,7 @@ const Navbar = () => {
     const handleShow = () => setShow(true);
   return (
     <div>
-      <nav className="navbar-nav navbar-expand-lg fixed-top bg-black mb-5">
+      <nav className="navbar-nav navbar-expand-lg fixed-top mb-5">
         <ul className='list-unstyled d-flex flex-direction-row justify-content-center align-items-center mt-3'>
 <Button variant="dark" onClick={handleShow}>
       <i className="bi bi-list"></i>

@@ -9,6 +9,7 @@ const AddSong = () => {
     const [genre,setGenre]=useState('')
     const [albumID,setAlbumID]=useState('')
     const [seconds,setSeconds]=useState('')
+    const [success,setSuccess]=useState(false)
     const handleForm=(event)=>{
         event.preventDefault()
         axios.post("http://localhost:3000/add",{
@@ -18,7 +19,7 @@ const AddSong = () => {
           genre:genre,
           albumID:albumID,
           seconds:seconds
-        }).then((res)=>console.log('Success'))
+        }).then((res)=>setSuccess(true))
         .catch((err)=>console.log(err))
         
     }
@@ -48,6 +49,7 @@ const AddSong = () => {
                 </div>
                 <button className="m-4 submit text-white col-3" onClick={handleForm}>Submit</button>
                 </form>
+        {success ? <p>Song Added</p>:<p className='text-danger'>Please enter right details</p>}
             </ul>
         </div>
     </div>

@@ -42,7 +42,7 @@ const Album = () => {
         <p className='label'><b className='cat'>Label</b> - {album.labelName}</p>
         </div>
         </div>
-        <Table responsive striped="columns" hover variant="dark" className='mt-5'>
+        <Table responsive variant="transparent" className='mt-5 text-white'>
         <thead>
             <tr>
             <th>Song ID</th>

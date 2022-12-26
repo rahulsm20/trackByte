@@ -4,12 +4,14 @@ import axios from 'axios'
 const addToPlaylist = () => {
     const [songId,setSongId]=useState('')
     const [songName,setSongName]=useState('')
+    const [albumID,setAlbumID]=useState('')
     const [status,setStatus]=useState(false)
     const handleForm=(event)=>{
       event.preventDefault()
         axios.post('http://localhost:3000/addToPlaylist',{
             songId:songId,
-            songName:songName
+            songName:songName,
+            albumId:albumID
         }).then((res)=>setStatus(true))
         .catch((err)=>console.log(err))
     }
@@ -26,6 +28,8 @@ const addToPlaylist = () => {
                 <li><input type="number" className='m-4 p-2'  onChange={(event)=>setSongId(event.target.value)} required/></li>
                 <label>Song Name</label>
                 <li><input type="text" className='m-4 p-2' onChange={(event)=>setSongName(event.target.value)} required/></li>
+                <label>Album ID</label>
+                <li><input type="number" className='m-4 p-2' onChange={(event)=>setAlbumID(event.target.value)} required/></li>
                 <button className="m-4 submit text-white col-5" onClick={handleForm}>Submit</button>
                 {status ? <p>Song added to playlist</p> : <p className='text-danger'>Please enter correct details</p>}
                 </div>

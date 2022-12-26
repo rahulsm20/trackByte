@@ -29,12 +29,12 @@ const ViewPlaylist = () => {
     <div>
       <Navbar/>
       <div className='p-5'>
-        <h1 className='mt-5 mb-5 pt-5'>Playlist</h1>
+        <h1 className='mt-5 mb-5 pt-5'>Songs</h1>
         <input placeholder='Search for a song' className='p-3 mb-5' role="search"
             value={query}
             onChange={(event) => {
               setQuery(event.target.value)}}></input>
-      <Table responsive striped="columns" bordered hover variant="dark">
+      <Table responsive variant="transparent" className='text-white'>
         <thead>
             <tr>
             <th>#</th>
@@ -42,7 +42,8 @@ const ViewPlaylist = () => {
             <th>Artist</th>
             <th>Genre</th>
             <th>Seconds</th>
-            <th>Actions</th>
+            <th>Album ID</th>
+            <th></th>
             </tr>
         </thead>
         <tbody>
@@ -53,6 +54,7 @@ const ViewPlaylist = () => {
         <td>{song.artName}</td>
         <td>{song.genre}</td>
         <td>{song.seconds}</td>
+        <td>{song.albumId}</td>
         <td>
             <ul className='list-unstyled d-flex '>
                 <li>

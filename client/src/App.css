@@ -23,10 +23,19 @@
 }
 
 body{
+  /* background-color: black; */
 background-image: url('../public/bg.jpg');
+background: #000000;  
+background: -webkit-linear-gradient(to right, rgb(67, 67, 67), #000000);  
+background: linear-gradient(to right, #070707, #000000);
+
 } 
 .logo{
   max-width: 1em;
+}
+nav{
+  background: linear-gradient(to top, rgba(17, 17, 17, 0.897), #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  /* border-bottom: 1px solid rgb(20, 20, 20); */
 }
 
 input{
@@ -48,6 +57,7 @@ input{
 .albumCover{
   border-radius: 1em;
   border: none;
+  box-shadow: 20px 20px 4px rgba(158, 41, 253, 0.123);
 }
 
 .artist,.label,.genre {
@@ -60,4 +70,3 @@ input{
 .delete{
   background-color:rgba(209, 14, 14, 0.938);
 }
-

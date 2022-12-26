@@ -1,5 +1,5 @@
 :root {
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
+  font-family: Inter;
   font-size: 16px;
   line-height: 24px;
   font-weight: 400;
@@ -27,7 +27,7 @@ a:hover {
 body {
   margin: 0;
   display: flex;
-  place-items: center;
+  place-items:initial;
   min-width: 320px;
   min-height: 100vh;
 }
@@ -57,7 +57,14 @@ button:focus-visible {
 }
 
 .chart{
-  border-radius: 1em;
-  background-color: transparent;
-  
+  border-radius: 2em;
+  /* background-color:#343538; */
+  font-family:'Inter';
+  background-image:radial-gradient(at 82% 30%, rgba(20,20,57,0.46) 0px, transparent 50%),radial-gradient(at 100% 66%, #29183f 0px, transparent 50%),radial-gradient(at 100% 0%, #161339 0px, transparent 50%),radial-gradient(at 35% 0%, #21163b 0px, transparent 50%),radial-gradient(at 47% 59%, rgba(65,40,77,0.76) 0px, transparent 50%),radial-gradient(at 1% 2%, #3b244c 0px, transparent 50%),radial-gradient(at 75% 1%, #1a1439 0px, transparent 50%),radial-gradient(at 100% 0%, #191439 0px, transparent 50%),radial-gradient(at 0% 99%, #694e6e 0px, transparent 50%),radial-gradient(at 0% 64%, rgba(103,80,109,0.57) 0px, transparent 50%),radial-gradient(at 0% 24%, #694e6e 0px, transparent 50%),radial-gradient(at 100% 100%, #553c5d 0px, transparent 50%),radial-gradient(at 72% 100%, #1e1335 0px, transparent 50%),radial-gradient(at 35% 100%, #1e1335 0px, transparent 50%);
+}
+
+Table{
+  font-family:'Inter';
+  font-weight: 300;
+  max-width: 100%;
 }

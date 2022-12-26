@@ -8,11 +8,14 @@ const Home = () => {
   let barData=[];
   let pieLabelData=[];
   let pieData=[];
+  const [loaded,setLoaded]=useState(false)
+  const [loaded1,setLoaded1]=useState(false)
   const [loading, setLoading] = useState(true);
   const [loading1,setLoading1]=useState(true)
+  const [favArtist,setFavArtist]=useState('');
   const [userData,setUserData]=useState({})
   const [pieChartData,setPieChartData]=useState({})
-  
+  const loadGif="https://acegif.com/wp-content/uploads/loading-11.gif"
   //To get Bar Chart Data
   useEffect(()=>{
     setLoading(true);
@@ -27,11 +30,12 @@ const Home = () => {
           {
             label:"Seconds",
             data:barData,
-            backgroundColor: 'rgba(255, 99, 132, 0.5)'
+            backgroundColor: 'rgba(0, 0, 54.5, 1)'
           }
         ]
       });
     },)
+    .then((res)=>setLoaded(true))
     .catch((err)=>console.log(err)
     )
     .finally(() => {
@@ -40,16 +44,24 @@ const Home = () => {
 },[])
   const option = {
     responsive: true,
+    indexAxis: 'y',
     plugins: {
       legend: {
-        position: 'top',
+        position: 'right',
       },
-      title: {
-        display: true,
-        text: 'Chart.js Bar Chart',
+        title: {
+          display: true,
+          text: 'Chart.js Bar Chart',
+        },
+        scales:{
+          yAxes:{
+            ticks:{
+              color:'white'
+            },
+          }
+        }
       },
-    },
-  };
+    };
 
   //To get Pie Chart Data
   useEffect(()=>{
@@ -57,7 +69,7 @@ const Home = () => {
     axios.get("http://localhost:3000/getpiedata")
       .then((res)=>{for (const Obj of res.data) {
         pieLabelData.push(Obj.albumName);
-        pieData.push(Obj.seconds/2);
+        pieData.push(Obj.seconds);
       }
       setPieChartData({
         labels:pieLabelData,
@@ -76,35 +88,72 @@ const Home = () => {
         ]
       });
     },)
+    .then((res)=>setLoaded1(true))
     .catch((err)=>console.log(err)
     )
     .finally(() => {
       setLoading1(false);
     });
 },[])
-  // console.log(pieChartData)
+  // console.log(pieChartData.datasets[0].data[0])
+  useEffect(()=>{
+    axios.get("http://localhost:3000/getFavArt")
+    .then((res)=>setFavArtist(res.data[0]))
+    .catch((err)=>console.log(err))
+  },[])
+
   return (
-    <div>
+    <div className='p-5'>
       <Navbar/>
-      <h1 className='mt-5'> Your Analytics</h1>
-      <div className=' p-4 mt-5 text-white d-flex'>
-      <div className='p-4 chart bg-black'>
-      <h5 className='p-5 mx-auto'>
+      <h1 className='mt-5 '> Analytics</h1>
+      <hr/>
+      <div className=' p-4 mt-5 text-white d-flex justify-content-center align-items-center flex-row '>
+      <div className='p-4 col-6 chart'>
+      <h2 className='p-5'>
         Your favorite genres
-        </h5> 
+        </h2> 
         {
-          loading ? <img src="https://media.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif"/> : 
+          loading ? <img src={loadGif}/> : 
           <BarChart data={userData} options={option}/>
         } 
         </div>
-        <div className='bg-black mx-5 p-3 chart'>
-          <h5>
+        <div className='mx-3 col-6 p-5'>
+          <h2>
+          Your favorite genre is {loaded ? <p className='text-warning'>{userData.labels[0]}</p>:<></>}
+          </h2>
+          <h2>
+            You listened to {loaded ? userData.datasets[0].data[0]:<></>} seconds of it!
+          </h2>
+        </div>
+      </div>
+      <div className='p-4 mt-5 text-white d-flex justify-content-center align-items-center flex-row'>
+        <div className='mx-3 col-6'>
+          <h2>Your favorite album is {loaded1 ? <p className='text-danger'>{pieChartData.labels[0]}</p>:<></>}</h2>
+          <h2>You listened to {loaded1 ? pieChartData.datasets[0].data[0]: <></>} seconds of it!</h2>
+        </div>
+        <div className='mx-4 p-5  justify-content-center align-items-center col-5 chart'>
+          <h2 className='mt-2'>
             Your favorite albums
-          </h5>
+          </h2>
 {
-          loading1 ? <img src="https://media.tenor.com/UnFx-k_lSckAAAAM/amalie-steiness.gif"/> : 
+          loading1 ? <img src={loadGif} className='col-5'/> :
 <PieChart piedata={pieChartData}/>
         } 
+        </div>
+        </div>
+      <div className='mt-5  p-5 justify-content-center align-items-center'>
+        <h1>Artist</h1>
+        <hr/>
+        <div className='d-flex flex-row align-items-center justify-content-center'>
+        <img src={favArtist.link} className='mt-5 col-5 albumCover'/>
+        <div className='mx-5  mt-5 d-flex flex-column p-5'>
+        <h2>Your favorite artist is 
+          <p className='text-primary'>
+            {favArtist.artName}
+            </p>
+            </h2>
+        <h2 className='m-5'>You listened to {loaded ? favArtist.seconds : <></>} seconds of their music!</h2>
+        </div>
         </div>
       </div>
     </div>
