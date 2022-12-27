@@ -18,7 +18,7 @@
 ### Screenshots
 ![home](./home.PNG)
 
-![albums](./albums.PNG)
+![albums](./Capture.PNG)
 
 ![playlist](./playlist.PNG)
 
