@@ -1,0 +1,23 @@
+const express=require('express')
+const router = express.Router();
+const addSong = require('../controllers/addSong')
+const getSongs=require('../controllers/getSongs')
+const displaySongs = require('../controllers/displaySongs')
+const addToPlaylist = require('../controllers/addToPlaylist')
+const getPlaylist = require('../controllers/getPlaylist')
+const deleteFromPlaylist = require('../controllers/deleteFromPlaylist')
+const getFavArt = require('../controllers/getFavArt')
+const barData = require('../controllers/barData')
+const pieData = require('../controllers/pieData')
+router.get('/', (req, res) => res.json('TrackByte API'))
+router.post('/add',addSong)
+router.get('/getSongs',getSongs)
+router.post('/addToPlaylist',addToPlaylist)
+router.get('/getPlaylist',getPlaylist)
+router.get('/displaysongs',displaySongs)
+router.delete('/delfromplaylist',deleteFromPlaylist)
+router.get('/getbardata',barData)
+router.get('/getpiedata',pieData)
+router.get('/getFavArt',getFavArt)
+
+module.exports=router
