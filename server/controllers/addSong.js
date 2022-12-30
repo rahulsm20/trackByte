@@ -11,10 +11,10 @@ const addSong = async(req,res)=>{
     (err,result)=>{
         if(err)
         {
-            console.log(err)
+            res.status(400).json(err)
         }
         else{
-            res.send('Song added')
+            res.status(200).json('Song added')
         }
     }
     )
