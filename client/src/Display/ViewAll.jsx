@@ -4,10 +4,10 @@ import axios from 'axios'
 import Table from 'react-bootstrap/Table'
 import { useNavigate } from 'react-router-dom'
 const ViewPlaylist = () => {
-  const navigate= useNavigate()
+  const [status,setStatus]=useState('')
     const [query,setQuery]=useState('')
-    const [playlist,setPlayList]=useState([{
-        songName:"",
+    const [songlist,setSonglist] = useState([{
+      songName:"",
         songId:"",
         genre:"",
         seconds:"",
@@ -15,15 +15,27 @@ const ViewPlaylist = () => {
     }])
     useEffect(()=>{
         axios.get("http://localhost:3000/displaySongs")
-        .then((res)=>setPlayList(res.data))
+        .then((res)=>setSonglist(res.data))
         .catch((err)=>console.log(err))
     },[])
-    const filteredPlaylist = useMemo(() => {
-        return playlist.filter((song) => {
+    const filteredSonglist = useMemo(() => {
+        return songlist.filter((song) => {
         return song.songName.toLowerCase().includes(query.toLowerCase());
-        })},[playlist,query]);
-    const handleClick = () =>{
-      navigate('/addToPlaylist')
+        })},[songlist,query]);
+    
+    // const handleClick = () =>{
+    //   navigate('/addToPlaylist')
+    // }
+    const handleClick=(id,name,al)=>{
+      event.preventDefault()
+        axios.post('http://localhost:3000/addToPlaylist',{
+            songId:id,
+            songName:name,
+            albumId:al
+        }).then((res)=>console.log(res))
+        .catch((err)=>console.log(err))
+        alert('Song added to playlist \n'+ name)
+        window.location.reload()
     }
   return (
     <div>
@@ -47,7 +59,7 @@ const ViewPlaylist = () => {
             </tr>
         </thead>
         <tbody>
-        {filteredPlaylist.map((song,key)=>
+        {filteredSonglist.map((song,key)=>
         <tr id={key}>
           <td>{song.songId}</td>    
           <td>{song.songName}</td>
@@ -58,7 +70,9 @@ const ViewPlaylist = () => {
         <td>
             <ul className='list-unstyled d-flex '>
                 <li>
-                    <button className="btn delete text-white m-1 bg-primary" onClick={handleClick}>Add to playlist</button>
+                    <button className="btn delete text-white m-1 bg-primary" onClick={()=>handleClick(song.songId,song.songName,song.albumId)}>
+                      {status ? <>Already in playlist</> :<>Add to playlist</>}
+                      </button>
                     </li>
                 </ul>
                 </td>

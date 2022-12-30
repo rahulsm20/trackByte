@@ -26,8 +26,16 @@ const Album = () => {
         .then((res)=>setMapAlbum(res.data[0]))
         .catch((err)=>console.log(err))
     },[]);
-    const handleShow = async ()=> {
-      navigate('/addtoplaylist')
+    const handleClick=(id,name,al)=>{
+      event.preventDefault()
+        axios.post('http://localhost:3000/addToPlaylist',{
+            songId:id,
+            songName:name,
+            albumId:al
+        }).then((res)=>console.log(res))
+        .catch((err)=>console.log(err))
+        alert('Song added to playlist \n'+ name)
+        window.location.reload()
     }
     return (
     <div>
@@ -36,10 +44,12 @@ const Album = () => {
         <img src={album.link} className='col-5'/>
         <div className="d-flex flex-column mx-auto">
         <h1 className='mx-4 albumtitle'>{album.albumName}</h1>
+        {album.noOfSongs} song(s)
         <hr/>
         <p className='artist'><b className='cat'>Artist</b> - <span>{album.artName}</span> </p>
         <p className='genre'><b className='cat'>Genre</b> - {album.genre}</p>
         <p className='label'><b className='cat'>Label</b> - {album.labelName}</p>
+        {/* <p className='noOfSongs'>{album.noOfSongs}<b className='cat'> songs</b></p> */}
         </div>
         </div>
         <Table responsive variant="transparent" className='mt-5 text-white'>
@@ -60,7 +70,7 @@ const Album = () => {
         <td>{song.artName}</td>
         <td>{song.seconds}</td>
         <td>
-        <button className="submit m-1 text-white" type="submit" onClick={handleShow}>Add to playlist</button>         
+        <button className="submit m-1 text-white" type="submit" onClick={()=>handleClick(song.songId,song.songName,song.albumId)}>Add to playlist</button>         
         </td>
         </tr>)}
         </tbody>
