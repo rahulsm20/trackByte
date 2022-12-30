@@ -18,8 +18,8 @@ const Navbar = () => {
 </li>
         </ul>
       </nav>
-      <Offcanvas show={show} onHide={handleClose} className="bg-black">
-        <Offcanvas.Header closeButton className='bg-dark'>
+      <Offcanvas show={show} onHide={handleClose} className="bg-black sidebar">
+        <Offcanvas.Header closeButton className='bg-dark nav-head'>
           <Offcanvas.Title className="text-white"><h4>
           Choose an action
           </h4>
@@ -40,13 +40,13 @@ const Navbar = () => {
             </h4>
             </Link>
         </li>
-        <li  className="p-2">
+        {/* <li  className="p-2">
           <Link to="/addtoplaylist">
            <h4>
 Add song to playlist
             </h4>
           </Link>
-        </li>
+        </li> */}
         <li className="p-2">
             <Link to='/viewPlaylist'><h4>
               View your playlist

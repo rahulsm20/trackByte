@@ -33,7 +33,7 @@ background: linear-gradient(to right, #070707, #000000);
 .logo{
   max-width: 1em;
 }
-nav{
+nav,.nav-head{
   background: linear-gradient(to top, rgba(17, 17, 17, 0.897), #202020); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   /* border-bottom: 1px solid rgb(20, 20, 20); */
 }
@@ -59,8 +59,10 @@ input{
   border: none;
   box-shadow: 20px 20px 4px rgba(158, 41, 253, 0.123);
 }
-
-.artist,.label,.genre {
+.sidebar{
+  box-shadow: 2px 2px 2px rgba(158, 41, 253, 0.123);
+}
+.artist,.label,.genre,.noOfSongs{
   font-family: 'Montserrat';
   font-size: 1.8em;
 }

@@ -6,7 +6,7 @@ const Index = () => {
     const [status,setStatus]=useState(false)
     const navigate = useNavigate()
     const handleForm=()=>{
-        if(username=='username' && password=='password')
+        if(username=='username' && password=='password357')
         {
             navigate('/analytics')
             setStatus(true)
