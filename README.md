@@ -7,8 +7,7 @@
      * NodeJS 
      * ExpressJS
   * Database    
-     * MongoDB 
-     * Mongoose
+     * MySQL
   * API testing  
      * PostmanAPI
   * Source & Version control 
