@@ -14,7 +14,7 @@ const Album = () => {
         seconds:" ",
         labelName:" "
     }])
-    const [state,setState]=useState('primary')
+    const [state,setState]=useState(false)
     const [album,setAlbum]=useState('')
     useEffect(()=>{
         axios.get(`http://localhost:3000/album/${name}`)
@@ -26,16 +26,16 @@ const Album = () => {
         .then((res)=>setMapAlbum(res.data[0]))
         .catch((err)=>console.log(err))
     },[]);
-    const handleClick=(id,name,al)=>{
+    const handleClick=(id,name,al,key)=>{
       event.preventDefault()
         axios.post('http://localhost:3000/addToPlaylist',{
             songId:id,
             songName:name,
             albumId:al
         }).then((res)=>console.log(res))
-        .catch((err)=>console.log(err))
-        alert('Song added to playlist \n'+ name)
-        window.location.reload()
+        .then(()=>alert('Song added to playlist \n'+ name))
+        .catch((err)=>alert('Song already in playlist'))
+        // window.location.reload()
     }
     return (
     <div>
@@ -44,6 +44,9 @@ const Album = () => {
         <img src={album.link} className='col-5'/>
         <div className="d-flex flex-column mx-auto">
         <h1 className='mx-4 albumtitle'>{album.albumName}</h1>
+        <p>
+          {mapAlbum[0].albumId}
+          </p> 
         {album.noOfSongs} song(s)
         <hr/>
         <p className='artist'><b className='cat'>Artist</b> - <span>{album.artName}</span> </p>
@@ -64,13 +67,13 @@ const Album = () => {
         </thead>
         <tbody>
         {mapAlbum.map((song,key)=>
-        <tr key={key}> 
+        <tr> 
         <td>{song.songId}</td>   
           <td>{song.songName}</td>
         <td>{song.artName}</td>
         <td>{song.seconds}</td>
         <td>
-        <button className="submit m-1 text-white" type="submit" onClick={()=>handleClick(song.songId,song.songName,song.albumId)}>Add to playlist</button>         
+        <button key={key} className={`submit m-1 text-white bg-${state}`} type="submit" onClick={()=>handleClick(song.songId,song.songName,song.albumId,key)}>{state ? <>Already in playlist</>:<>Add to playlist</> }</button>         
         </td>
         </tr>)}
         </tbody>

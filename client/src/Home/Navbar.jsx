@@ -1,6 +1,8 @@
 import React,{useState} from 'react'
 import {Offcanvas,Button} from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import { FcMusic } from 'react-icons/fc';
+
 const Navbar = () => {
     const [show, setShow] = useState(false);
 
@@ -14,7 +16,7 @@ const Navbar = () => {
       <i className="bi bi-list"></i>
       </Button>
 <li className='text-center nav-item mx-auto'>
-      <h2 id="title">TrackByte <img src="../../public/logo.png" className='logo'/></h2>
+      <h2 id="title">TrackByte <FcMusic/></h2>
 </li>
         </ul>
       </nav>
@@ -33,13 +35,13 @@ const Navbar = () => {
               </h4>
 </Link>
         </li>
-        <li className="p-2">
+        {/* <li className="p-2">
           <Link to='/addSong'>
             <h4>
             Add new song
             </h4>
             </Link>
-        </li>
+        </li> */}
         {/* <li  className="p-2">
           <Link to="/addtoplaylist">
            <h4>
