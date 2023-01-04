@@ -33,9 +33,9 @@ const ViewPlaylist = () => {
             songName:name,
             albumId:al
         }).then((res)=>console.log(res))
-        .catch((err)=>console.log(err))
-        alert('Song added to playlist \n'+ name)
-        window.location.reload()
+        .then(()=>alert('Song added to playlist \n'+ name))
+        .catch((err)=>alert('Song already in playlist'))
+        // window.location.reload()
     }
   return (
     <div>
@@ -71,7 +71,7 @@ const ViewPlaylist = () => {
             <ul className='list-unstyled d-flex '>
                 <li>
                     <button className="btn delete text-white m-1 bg-primary" onClick={()=>handleClick(song.songId,song.songName,song.albumId)}>
-                      {status ? <>Already in playlist</> :<>Add to playlist</>}
+                      Add to playlist
                       </button>
                     </li>
                 </ul>
