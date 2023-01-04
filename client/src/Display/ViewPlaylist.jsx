@@ -5,6 +5,7 @@ import Table from 'react-bootstrap/Table'
 import { useNavigate } from 'react-router-dom'
 const ViewPlaylist = () => {
   const navigate= useNavigate()
+    
     const [query,setQuery]=useState('')
     const [playlist,setPlayList]=useState([{
         songName:"",
@@ -22,8 +23,14 @@ const ViewPlaylist = () => {
         return playlist.filter((song) => {
         return song.songName.toLowerCase().includes(query.toLowerCase());
         })},[playlist,query]);
-    const handleClick = () =>{
-      navigate('/delfromplaylist')
+    
+    const handleClick=(id,name)=>{
+        axios.delete('http://localhost:3000/delfromplaylist',{
+          data:{ songId:id }
+        }).then((res)=>console.log(res))
+        .catch((err)=>console.log(err))
+        alert('Song deleted from playlist: ' + name)
+        window.location.reload()
     }
   return (
     <div>
@@ -58,7 +65,7 @@ const ViewPlaylist = () => {
         <td>
             <ul className='list-unstyled d-flex '>
                 <li>
-                    <button className="btn delete text-white m-1" onClick={handleClick}>Delete</button>
+                    <button className="btn delete text-white m-1" onClick={()=>handleClick(song.songId,song.songName)}>Delete</button>
                     </li>
                 </ul>
                 </td>

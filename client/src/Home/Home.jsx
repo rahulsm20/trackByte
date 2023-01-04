@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import BarChart from './BarChart'
 import axios from 'axios'
 import PieChart from './PieChart'
+import {motion} from 'framer-motion'
 const Home = () => {
   let labelData=[];
   let barData=[];
@@ -108,7 +109,7 @@ const Home = () => {
       <h1 className='mt-5 '> Analytics</h1>
       <hr/>
       <div className=' p-4 mt-5 text-white d-flex justify-content-center align-items-center flex-row '>
-      <div className='p-4 col-6 chart'>
+      <motion.div className='p-4 col-6 chart'>
       <h2 className='p-5'>
         Your favorite genres
         </h2> 
@@ -116,7 +117,7 @@ const Home = () => {
           loading ? <img src={loadGif}/> : 
           <BarChart data={userData} options={option}/>
         } 
-        </div>
+        </motion.div>
         <div className='mx-3 col-6 p-5'>
           <h2>
           Your favorite genre is {loaded ? <p className='text-warning'>{userData.labels[0]}</p>:<></>}
