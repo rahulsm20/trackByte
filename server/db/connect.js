@@ -3,7 +3,7 @@ require('dotenv').config()
 const db = mysql.createConnection({
     user: "root",
     host: "containers-us-west-146.railway.app",
-    password: "8xkN97LaOsaBuzxcgZz8",
+    password: (process.env.mysqlPass),
     database: "playlist",
     port:5969
   });
