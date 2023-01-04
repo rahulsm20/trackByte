@@ -21,7 +21,7 @@ function App() {
         <Route path='/viewPlaylist' element={<ViewPlaylist/>}/>
         <Route path='/viewAlbums' element={<ViewSongs/>}/>
         <Route path='/viewAll' element={<ViewAll/>}/>
-        <Route path='/:name' element={<Album/>}/>
+        <Route path='album/:name' element={<Album/>}/>
         <Route path='*' element={<h1>Error 404 Page does not exist :(</h1>}/>
       </Routes>
     </div>
