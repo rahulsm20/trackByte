@@ -15,13 +15,13 @@
      * Github
      
 ### Screenshots
-![home](./home.PNG)
+![home](./images/home.PNG)
 
-![albums](./Capture.PNG)
+![albums](./images/Capture.PNG)
 
-![playlist](./playlist.PNG)
+![playlist](./images/playlist.PNG)
 
-![analytics](./analytics.PNG)
-![analytics2](./analytics2.PNG)
-![analytics3](./analytics3.PNG)
+![analytics](./images/analytics.PNG)
+![analytics2](./images/analytics2.PNG)
+![analytics3](./images/analytics3.PNG)
 
