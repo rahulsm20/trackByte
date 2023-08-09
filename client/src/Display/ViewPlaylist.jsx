@@ -15,7 +15,7 @@ const ViewPlaylist = () => {
         labelname:""
     }])
     useEffect(()=>{
-        axios.get("http://localhost:3000/getPlaylist")
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/getPlaylist`)
         .then((res)=>setPlayList(res.data[0]))
         .catch((err)=>console.log(err))
     },[])
@@ -25,7 +25,7 @@ const ViewPlaylist = () => {
         })},[playlist,query]);
     
     const handleClick=(id,name)=>{
-        axios.delete('http://localhost:3000/delfromplaylist',{
+        axios.delete(`${import.meta.env.VITE_SERVER_URL}/delfromplaylist`,{
           data:{ songId:id }
         }).then((res)=>console.log(res))
         .catch((err)=>console.log(err))

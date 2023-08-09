@@ -8,7 +8,7 @@ const addToPlaylist = () => {
     const [status,setStatus]=useState(false)
     const handleForm=(event)=>{
       event.preventDefault()
-        axios.post('http://localhost:3000/addToPlaylist',{
+        axios.post(`${import.meta.env.VITE_SERVER_URL}/addToPlaylist`,{
             songId:songId,
             songName:songName,
             albumId:albumID

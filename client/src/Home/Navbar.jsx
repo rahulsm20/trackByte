@@ -30,7 +30,7 @@ const Navbar = () => {
         <Offcanvas.Body>
       <ul className="list-unstyled  ">
         <li className='p-2'>
-            <Link to='/analytics'><h4>
+            <Link to='/'><h4>
               Home
               </h4>
 </Link>

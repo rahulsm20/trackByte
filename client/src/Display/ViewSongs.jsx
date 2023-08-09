@@ -13,7 +13,7 @@ const ViewSongs = () => {
         labelname:""
     }])
     useEffect(()=>{
-        axios.get("http://localhost:3000/getSongs")
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/getSongs`)
         .then((res)=>setSongList(res.data))
         .catch((err)=>console.log(err))
     },[])

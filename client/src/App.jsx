@@ -13,8 +13,8 @@ function App() {
   return (
     <div className="App text-white">
       <Routes>
-        <Route path='/' element={<Index/>}/>
-        <Route path='/analytics' element={<Home/>}/>
+        {/* <Route path='/' element={<Index/>}/> */}
+        <Route path='/' element={<Home/>}/>
         <Route path='/addSong' element={<AddSong/>}/>
         <Route path='/delfromplaylist' element={<DeleteFromPlaylist/>}/>
         <Route path='/addtoplaylist' element={<AddToPlaylist/>}/>

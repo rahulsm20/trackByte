@@ -12,7 +12,7 @@ const AddSong = () => {
     const [success,setSuccess]=useState(false)
     const handleForm=(event)=>{
         event.preventDefault()
-        axios.post("http://localhost:3000/add",{
+        axios.post(`${import.meta.env.VITE_SERVER_URL}/add`,{
           songId:songId,
           songName:songName,
           artId:artId,

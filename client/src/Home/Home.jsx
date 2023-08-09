@@ -20,7 +20,7 @@ const Home = () => {
   //To get Bar Chart Data
   useEffect(()=>{
     setLoading(true);
-    axios.get("http://localhost:3000/getbardata")
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/getbardata`)
       .then((res)=>{for (const Obj of res.data) {
         labelData.push(Obj.genre);
         barData.push(Obj.seconds);
@@ -67,7 +67,7 @@ const Home = () => {
   //To get Pie Chart Data
   useEffect(()=>{
     setLoading1(true);
-    axios.get("http://localhost:3000/getpiedata")
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/getpiedata`)
       .then((res)=>{for (const Obj of res.data) {
         pieLabelData.push(Obj.albumName);
         pieData.push(Obj.seconds);
@@ -98,7 +98,7 @@ const Home = () => {
 },[])
   // console.log(pieChartData.datasets[0].data[0])
   useEffect(()=>{
-    axios.get("http://localhost:3000/getFavArt")
+    axios.get(`${import.meta.env.VITE_SERVER_URL}/getFavArt`)
     .then((res)=>setFavArtist(res.data[0]))
     .catch((err)=>console.log(err))
   },[])

@@ -17,18 +17,18 @@ const Album = () => {
     const [state,setState]=useState(false)
     const [album,setAlbum]=useState('')
     useEffect(()=>{
-        axios.get(`http://localhost:3000/album/${name}`)
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/album/${name}`)
         .then((res)=>setAlbum(res.data[0][0]))
         .catch((err)=>console.log(err))
     },[]);
     useEffect(()=>{
-        axios.get(`http://localhost:3000/album/${name}`)
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/album/${name}`)
         .then((res)=>setMapAlbum(res.data[0]))
         .catch((err)=>console.log(err))
     },[]);
     const handleClick=(id,name,al,key)=>{
       event.preventDefault()
-        axios.post('http://localhost:3000/addToPlaylist',{
+        axios.post(`${import.meta.env.VITE_SERVER_URL}/addToPlaylist`,{
             songId:id,
             songName:name,
             albumId:al

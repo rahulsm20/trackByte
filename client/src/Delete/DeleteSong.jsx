@@ -6,7 +6,7 @@ const DeleteFromPlaylist = () => {
     const [status,setStatus]=useState(false)
     const handleForm=(event)=>{
       event.preventDefault()
-        axios.delete('http://localhost:3000/delfromplaylist',{
+        axios.delete(`${import.meta.env.VITE_SERVER_URL}/delfromplaylist`,{
           data:{ songId:songId }
         }).then((res)=>setStatus(true))
         .catch((err)=>console.log(err))

@@ -14,7 +14,7 @@ const ViewPlaylist = () => {
         artName:""
     }])
     useEffect(()=>{
-        axios.get("http://localhost:3000/displaySongs")
+        axios.get(`${import.meta.env.VITE_SERVER_URL}/displaySongs`)
         .then((res)=>setSonglist(res.data))
         .catch((err)=>console.log(err))
     },[])
@@ -28,7 +28,7 @@ const ViewPlaylist = () => {
     // }
     const handleClick=(id,name,al)=>{
       event.preventDefault()
-        axios.post('http://localhost:3000/addToPlaylist',{
+        axios.post(`${import.meta.env.VITE_SERVER_URL}/addToPlaylist`,{
             songId:id,
             songName:name,
             albumId:al
