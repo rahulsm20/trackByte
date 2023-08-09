@@ -1,6 +1,8 @@
-# TrackByte 🎶
+# TrackByte 🎶  
+### [Deployed link](https://track-byte.vercel.app)
 ### Index
 - [TrackByte 🎶](#trackbyte-)
+    - [Deployed link](#deployed-link)
     - [Index](#index)
     - [Tech stack](#tech-stack)
     - [System Architecture](#system-architecture)
